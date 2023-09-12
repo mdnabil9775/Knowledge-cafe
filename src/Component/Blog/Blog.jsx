@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { FaBookmark } from 'react-icons/fa';
 
-const Blog = ({blog, hanleAddBookMarks }) => {
+const Blog = ({blog, hanleAddBookMarks, handleMarkAsRead }) => {
     const {cover, title, author, author_img, posted_date, reading_time, hashtags} = blog;
     return (
         <div className='p-4 shadow-lg rounded-xl my-6'>
@@ -16,7 +16,7 @@ const Blog = ({blog, hanleAddBookMarks }) => {
             </div>
             <div className='flex gap-x-2'>
                 <p className='text-[#AFAFAF]'>{reading_time} Min read </p>
-                <button onClick={()=>hanleAddBookMarks(blog)} className='text-2xl text-green-600'><FaBookmark></FaBookmark></button>
+                <button onClick={()=>hanleAddBookMarks(blog)} className='text-2xl text-orange-400'><FaBookmark></FaBookmark></button>
             </div>
             </div>
 
@@ -25,7 +25,7 @@ const Blog = ({blog, hanleAddBookMarks }) => {
                 hashtags.map(hash=><span key={blog.title} className='mb-5 hover:text-blue-500'><a href="">#{hash}</a></span>)
             }
             <br />
-            <a className=' text-blue-800 underline' href="">Mark as Read</a>
+            <button onClick={()=>handleMarkAsRead(reading_time)} className='pt-3 font-bold text-blue-800 underline'>Mark as Read</button>
             <hr className='my-5' />
         </div>
     );
@@ -33,6 +33,7 @@ const Blog = ({blog, hanleAddBookMarks }) => {
 
 Blog.propTypes={
     blog: PropTypes.object.isRequired,
-    hanleAddBookMarks: PropTypes.func
+    hanleAddBookMarks: PropTypes.func,
+    handleMarkAsRead: PropTypes.func
 }
 export default Blog;
