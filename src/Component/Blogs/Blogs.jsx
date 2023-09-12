@@ -11,15 +11,14 @@ const Blogs = ({hanleAddBookMarks, handleMarkAsRead}) => {
         .then(res => res.json())
         .then(data=> SetBlogs(data));
     },[])
-    console.log(blogs)
 
     return (
         <div className="w-full md:w-2/3 lg:w-2/3 my-10 sm:container sm:mx-1">
         
         {
-            blogs.map(blog=> <Blog 
+            blogs.map((blog, idx)=> <Blog 
                 hanleAddBookMarks={hanleAddBookMarks} 
-                key={blogs.id} 
+                key={idx} 
                 blog={blog}
                 handleMarkAsRead={handleMarkAsRead}
                 ></Blog>)
